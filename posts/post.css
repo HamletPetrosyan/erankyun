@@ -1,34 +1,34 @@
 @font-face {
   font-family: 'Arian AMU Serif';
-  src: local('fonts/ArianAMUSerif.ttf') format('truetype');
+  src: local('../fonts/ArianAMUSerif.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Arian AMU Serif';
-  src: local('fonts/ArianAMUSerif-Bold.ttf') format('truetype');
+  src: local('../fonts/ArianAMUSerif-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Arian AMU Serif';
-  src: local('fonts/ArianAMUSerif-BoldItalic.ttf') format('truetype');
+  src: local('../fonts/ArianAMUSerif-BoldItalic.ttf') format('truetype');
   font-weight: bold;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Arian AMU Serif';
-  src: local('fonts/ArianAMUSerif-Italic.ttf') format('truetype');
+  src: local('../fonts/ArianAMUSerif-Italic.ttf') format('truetype');
   font-weight: normal;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Braind Ijevan';
-  src: local('fonts/BraindZbans.otf') format('opentype');
+  src: local('../fonts/BraindZbans.otf') format('opentype');
   font-weight: normal;
   font-style: italic;
 }

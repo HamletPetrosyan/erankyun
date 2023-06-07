@@ -1,36 +1,36 @@
 @font-face {
   font-family: 'Arian AMU Serif';
-  src: url('https://github.com/HamletPetrosyan/erankyun/raw/main/fonts/ArianAMUSerif-Bold.ttf') format('truetype');
-  font-weight: normal; /* Light font weight */
+  src: local('../fonts/ArianAMUSerif.ttf') format('truetype');
+  font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Arian AMU Serif';
-  src: url('https://github.com/HamletPetrosyan/erankyun/raw/main/ArianAMUSerif-Bold.ttf') format('truetype');
-  font-weight: bold; /* Regular font weight */
+  src: local('../fonts/ArianAMUSerif-Bold.ttf') format('truetype');
+  font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Arian AMU Serif';
-  src: url('https://github.com/HamletPetrosyan/erankyun/raw/main/ArianAMUSerif-BoldItalic.ttf') format('truetype');
-  font-weight: bold; /* Bold font weight */
+  src: local('../fonts/ArianAMUSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Arian AMU Serif';
-  src: url('https://github.com/HamletPetrosyan/erankyun/raw/main/ArianAMUSerif-Italic.ttf') format('truetype');
-  font-weight: normal; /* Regular font weight */
+  src: local('../fonts/ArianAMUSerif-Italic.ttf') format('truetype');
+  font-weight: normal;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'Braind Zbans';
-  src: url('https://github.com/HamletPetrosyan/erankyun/raw/main/fonts/BraindZbans.ttf') format('truetype');
-  font-weight: normal; /* Bold font weight */
-  font-style: normal;
+  font-family: 'Braind Ijevan';
+  src: local('../fonts/BraindZbans.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
 }
 
 html, body {
@@ -56,7 +56,7 @@ html, body {
 }
 
 .logo {
-  font-family: 'Braind Zbans';
+  font-family: 'Braind Ijevan';
   font-size: 24px;
   font-weight: bold;
   text-decoration: underline;
