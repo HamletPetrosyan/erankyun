@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel ="stylesheet" href="../style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+<title>Հայաստանի թիմային արդյունքները IOI-ում</title>
+
+</head>
+
+<body>
+<nav class="navbar">
+<a class="logo" href="#">3անկյուն</a>
+<ul class="nav-links">
+<li><a href="#">Բլոգ</a></li>
+<li><a href="#">Հոդվածներ</a></li>
+<li><a href="#">Իմ մասին</a></li>
+</ul>
+</nav>
+
+<div class="container">
+<div class="content">
+<header id="title-block-header">
+<h1 class="title">Հայաստանի թիմային արդյունքները IOI-ում</h1>
+<p class="info">
+</h6>
+<p class="info">12.01.2023
+</h6>
+</header>
+<p>Փորձել եմ համեմատել Հայաստանի թիմի ցուցադրած արդյունքները մնացած
+երկրների հետ։ Դրա համար ամենահարմարը գտա հաշվել թիմերի գումարային
+միավորները և համեմատել։</p>
+<p>Նախ ստանանք թիմերի արդյունքները հարմար տարբերակով։ Հետևյալով <a
+href="http://stats.ioinformatics.org/">IOI-ի տվյալների կայքից</a>
+Անհատական արդյունքները ստանում ենք csv ֆայլերի տարբերակով, որոնք ավելի
+հարմար են աշխատելու համար:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2012</span>, <span class="dv">2023</span>):</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="st">&#39;http://stats.ioinformatics.org/results/&#39;</span> <span class="op">+</span> <span class="bu">str</span>(i)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    filename <span class="op">=</span> <span class="st">&#39;csv/&#39;</span> <span class="op">+</span> <span class="bu">str</span>(i) <span class="op">+</span> <span class="st">&#39;.csv&#39;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    tables <span class="op">=</span> pd.read_html(url)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    tables[<span class="dv">0</span>].to_csv(filename) </span></code></pre></div>
+<p>Այնուհետև ուղղակի յուրաքանչյուր թիմի համար հաշվում ենք իր արդյունքը,
+և հասկանում թե որերորդն է Հայաստանը դրանց մեջ:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> {}</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>COUNTRY <span class="op">=</span> <span class="st">&#39;Armenia&#39;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> {}</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2012</span>, <span class="dv">2023</span>):</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    filename <span class="op">=</span> <span class="st">&#39;csv/&#39;</span> <span class="op">+</span> <span class="bu">str</span>(i) <span class="op">+</span> <span class="st">&#39;.csv&#39;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(filename, mode<span class="op">=</span><span class="st">&#39;r&#39;</span>, encoding<span class="op">=</span><span class="st">&quot;utf8&quot;</span>) <span class="im">as</span> csv_file:</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        csv_reader <span class="op">=</span> csv.DictReader(csv_file, delimiter<span class="op">=</span><span class="st">&#39;,&#39;</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        done <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> row <span class="kw">in</span> csv_reader:</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> row[<span class="st">&#39;Rank&#39;</span>] <span class="op">==</span> <span class="st">&#39;&#39;</span>:</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>            now <span class="op">=</span> d.get(row[<span class="st">&#39;Country&#39;</span>])</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> now <span class="op">==</span> <span class="va">None</span>:</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                now <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>            now <span class="op">+=</span> <span class="bu">float</span>(row[<span class="st">&#39;Abs&#39;</span>])</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>            d.update({row[<span class="st">&#39;Country&#39;</span>]: now})</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">sorted</span>(d.items(), key<span class="op">=</span><span class="kw">lambda</span> item: item[<span class="dv">1</span>]))</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    Plc <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    Abs <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ctry <span class="kw">in</span> d:</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> ctry <span class="op">==</span> COUNTRY:</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>            Abs <span class="op">=</span> d[ctry]</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> Abs <span class="op">&gt;</span> <span class="op">-</span><span class="dv">1</span> <span class="kw">and</span> d[ctry] <span class="op">!=</span> Abs:</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        Plc <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    Plc <span class="op">=</span> <span class="bu">len</span>(d) <span class="op">-</span> Plc <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    res.update({i: {<span class="st">&quot;Result&quot;</span>: <span class="bu">round</span>(Abs, <span class="dv">2</span>), <span class="st">&quot;Place&quot;</span>: <span class="bu">str</span>(Plc) <span class="op">+</span> <span class="st">&quot;/&quot;</span> <span class="op">+</span> <span class="bu">str</span>(<span class="bu">len</span>(d)), <span class="st">&quot;Related&quot;</span>: <span class="bu">round</span>(Plc <span class="op">*</span> <span class="dv">100</span> <span class="op">/</span> <span class="bu">len</span>(d), <span class="dv">2</span>)}})</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    d.clear()</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Year  Result   Place  Rel.&quot;</span>)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2012</span>, <span class="dv">2023</span>):</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    year <span class="op">=</span>  <span class="st">&quot;</span><span class="sc">{:&lt;6}</span><span class="st">&quot;</span>.<span class="bu">format</span>(<span class="bu">str</span>(i))</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> res[i][<span class="st">&#39;Result&#39;</span>] <span class="op">==</span> <span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>        year <span class="op">+=</span> <span class="st">&#39;------   -----  ----&#39;</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>        year <span class="op">=</span>  <span class="st">&quot;</span><span class="sc">{:&lt;6}</span><span class="st">&quot;</span>.<span class="bu">format</span>(<span class="bu">str</span>(i))</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>        year <span class="op">+=</span> <span class="st">&quot;</span><span class="sc">{:&lt;9}</span><span class="st">&quot;</span>.<span class="bu">format</span>(res[i][<span class="st">&#39;Result&#39;</span>])</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>        year <span class="op">+=</span> <span class="st">&quot;</span><span class="sc">{:&lt;7}</span><span class="st">&quot;</span>.<span class="bu">format</span>(res[i][<span class="st">&#39;Place&#39;</span>])</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>        year <span class="op">+=</span> <span class="bu">str</span>(res[i][<span class="st">&#39;Related&#39;</span>]) <span class="op">+</span> <span class="st">&#39;%&#39;</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(year)</span></code></pre></div>
+<p>Եվ վերջնական արդյունքը․</p>
+<pre><code>Year  Result   Place  Rel.
+2012  600.0    40/81  49.38%
+2013  672.0    49/77  63.64%
+2014  1260.0   23/81  28.4%
+2015  832.6    37/83  44.58%
+2016  892.0    43/80  53.75%
+2017  463.32   53/83  63.86%
+2018  450.0    66/87  75.86%
+2019  ------   -----  ----
+2020  1387.34  22/87  25.29%
+2021  902.0    36/88  40.91%
+2022  565.19   43/90  47.78%</code></pre>
+</div>
+</div>  
+
+<div class="footer-container">
+<div class="footer-content">
+<div class="footer-text">
+<p>© 2023 Համլետ Պետրոսյան</p>
+</div>
+<div class="footer-icons">
+<a href="https://codeforces.com/profile/erankyun" class="fas fa-paw"></a>
+<a href="https://atcoder.jp/users/HamletPetrosyan" class="fas fa-horse"></a>
+<a href="https://www.codechef.com/users/hamazark" class="fas fa-utensils"></a>
+<a href="https://typingstats.com/profile/pjr" class="fas fa-keyboard"></a>
+</div>
+</div>
+</div>
+</body>
+
+</html>
