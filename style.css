@@ -1,3 +1,38 @@
+@font-face {
+  font-family: 'YourFontName';
+  src: url('fonts/ArianAMUSerif.ttf') format('truetype');
+  font-weight: normal; /* Light font weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'YourFontName';
+  src: url('fonts/ArianAMUSerif-Bold.ttf') format('truetype');
+  font-weight: bold; /* Regular font weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'YourFontName';
+  src: url('fonts/ArianAMUSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold; /* Bold font weight */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'YourFontName';
+  src: url('fonts/ArianAMUSerif-Italic.ttf') format('truetype');
+  font-weight: normal; /* Regular font weight */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'YourFontName';
+  src: url('fonts/BraindZbans.ttf') format('truetype');
+  font-weight: normal; /* Bold font weight */
+  font-style: normal;
+}
+
 html, body {
   height: Calc(100% - 53px);
   margin: 0;
